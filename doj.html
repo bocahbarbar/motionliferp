@@ -1,0 +1,611 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="id">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Code Generator - Recruitment (Department Of Justice)</title>
+		<style>
+			:root {
+				--accent: #002d70;
+			}
+			body {
+				font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+					Arial;
+				margin: 18px;
+				background: #f7f8fb;
+				color: #111;
+			}
+			h1 {
+				font-size: 20px;
+				margin: 0 0 8px;
+			}
+			.hint {
+				color: #555;
+				margin-bottom: 12px;
+			}
+			.container {
+				max-width: 980px;
+				margin: 0 auto;
+			}
+			.section {
+				background: #fff;
+				border: 1px solid #e6e9ef;
+				border-radius: 10px;
+				padding: 14px;
+				margin-bottom: 12px;
+				box-shadow: 0 1px 2px rgba(16, 24, 40, 0.03);
+			}
+			.section h2 {
+				display: flex;
+				align-items: center;
+				margin: 0 0 8px;
+				font-size: 14px;
+			}
+			label {
+				display: block;
+				font-weight: 600;
+				margin: 8px 0 6px;
+			}
+			input[type='text'],
+			textarea,
+			select {
+				width: 100%;
+				padding: 8px;
+				border: 1px solid #d6d9e6;
+				border-radius: 8px;
+				background: #fff;
+				box-sizing: border-box;
+			}
+			textarea {
+				min-height: 100px;
+				resize: vertical;
+			}
+			.row {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 12px;
+			}
+			.actions {
+				display: flex;
+				gap: 8px;
+				margin-top: 12px;
+			}
+			button {
+				background: var(--accent);
+				color: #fff;
+				border: 0;
+				padding: 8px 12px;
+				border-radius: 8px;
+				cursor: pointer;
+			}
+			button.ghost {
+				background: #6c757d;
+			}
+			pre,
+			#output {
+				font-family: monospace;
+				white-space: pre-wrap;
+				background: #0f1724;
+				color: #e6eef8;
+				padding: 12px;
+				border-radius: 8px;
+				border: 1px solid #cfd8e3;
+			}
+			/* popup */
+			#popup {
+				display: none;
+				position: fixed;
+				inset: 0;
+				background: rgba(0, 0, 0, 0.6);
+				align-items: center;
+				justify-content: center;
+			}
+			#popupInner {
+				background: #fff;
+				border-radius: 10px;
+				padding: 14px;
+				max-width: 900px;
+				width: 92%;
+				max-height: 90vh;
+				overflow: auto;
+			}
+			.small {
+				font-size: 13px;
+				color: #666;
+			}
+			.inline {
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>BBC Code Generator — Recruitment Department Of Justice</h1>
+			<p class="hint">
+				Isi setiap field lalu klik <strong>Generate</strong>. Gunakan
+				<strong>Preview</strong> untuk melihat hasil dan
+				<strong>Copy</strong> untuk menyalin ke clipboard. lalu akan di posting
+				di
+				<a href="https://sasp-motionliferp.com/viewforum.php?f=193">Di Forum</a>
+			</p>
+
+			<form id="form">
+				<!-- PERSONAL INFORMATION -->
+				<div class="section" id="personal-section">
+					<h2
+						style="
+							background: linear-gradient(90deg, var(--accent), #06427a);
+							color: #fff;
+							padding: 8px;
+							border-radius: 6px;
+						"
+					>
+						PERSONAL INFORMATION
+					</h2>
+
+					<div
+						class="section"
+						style="border: 0; padding: 8px 0 0; background: transparent"
+					>
+						<label>FIRST NAME</label>
+						<input type="text" id="firstName" placeholder="First name" />
+
+						<label>LAST NAME</label>
+						<input type="text" id="lastName" placeholder="Last name" />
+
+						<div class="row">
+							<div>
+								<label>DATE OF BIRTH (DD/MM/YYYY)</label>
+								<input type="text" id="dob" placeholder="DD/MM/YYYY" />
+							</div>
+							<div>
+								<label>PLACE OF BIRTH</label>
+								<input type="text" id="pob" placeholder="Place of birth" />
+							</div>
+						</div>
+
+						<div class="row">
+							<div>
+								<label>GENDER</label>
+								<select id="gender">
+									<option value="">-- pilih --</option>
+									<option>Male</option>
+									<option>Female</option>
+									<option>Other</option>
+								</select>
+							</div>
+							<div>
+								<label>PHONE NUMBER</label>
+								<input type="text" id="phone" placeholder="Phone number" />
+							</div>
+						</div>
+
+						<label
+							>FROM THE FOLLOWING LEGAL AVENUES, WHICH ONE WOULD YOU CHOOSE
+							?</label
+						>
+						<select id="legalAvenue">
+							<option value="">-- pilih --</option>
+							<option>Join the Department of Justice – State Attorney</option>
+							<option>Join the Judiciary - Judge</option>
+							<option>
+								Administrative Office / Clerk (focusing on correspondence,
+								payroll, documents, and DOJ administration)
+							</option>
+							<option>Take the State Bar to establish/join a Law Firm</option>
+							<option value="other">Others, please explain</option>
+						</select>
+						<div
+							id="legalAvenueOtherWrap"
+							style="display: none; margin-top: 8px"
+						>
+							<label>Jika Others — jelaskan</label>
+							<input
+								type="text"
+								id="legalAvenueOther"
+								placeholder="Jelaskan pilihan lainnya..."
+							/>
+						</div>
+					</div>
+				</div>
+
+				<!-- LEGAL INFORMATION -->
+				<div class="section" id="legal-section">
+					<h2
+						style="
+							background: linear-gradient(90deg, var(--accent), #06427a);
+							color: #fff;
+							padding: 8px;
+							border-radius: 6px;
+						"
+					>
+						LEGAL INFORMATION
+					</h2>
+
+					<label>DO YOU HAVE GOOD CONDUCT ?</label>
+					<select id="goodConduct">
+						<option value="">-- pilih --</option>
+						<option>Yes</option>
+						<option>No</option>
+					</select>
+
+					<label
+						>HAVE YOU EVER BEEN ARRESTED BY THE POLICE ? IF YES PLEASE
+						EXPLAIN</label
+					>
+					<textarea
+						id="arrestExplain"
+						placeholder="Jelaskan jika pernah..."
+					></textarea>
+
+					<label
+						>DO YOU HAVE FAMILY OR RELATIVES WHO ARE AFFILIATED WITH STREET
+						GANGS ? IF YES PLEASE EXPLAIN</label
+					>
+					<textarea
+						id="gangExplain"
+						placeholder="Jelaskan jika ada..."
+					></textarea>
+
+					<label>ARE YOU MARRIED OR NOT?</label>
+					<select id="marital">
+						<option value="">-- pilih --</option>
+						<option>Married</option>
+						<option>Single</option>
+						<option>Other</option>
+					</select>
+
+					<label
+						>ARE YOU READY TO JOIN THE ACADEMY DEPARTMENT OF JUSTICE ON
+						SEPTEMBER 15–16 AT 08:00 PM, WHETHER YOU WANT TO JOIN THE DOJ OR
+						JUST WANT TO TAKE THE STATE BAR EXAM?</label
+					>
+					<select id="readyAcademy">
+						<option value="">-- pilih --</option>
+						<option>Yes</option>
+						<option>No</option>
+						<option>Maybe / Need more info</option>
+					</select>
+				</div>
+
+				<!-- PERSONAL QUESTION -->
+				<div class="section" id="personal-question-section">
+					<h2
+						style="
+							background: linear-gradient(90deg, var(--accent), #06427a);
+							color: #fff;
+							padding: 8px;
+							border-radius: 6px;
+						"
+					>
+						PERSONAL QUESTION
+					</h2>
+
+					<label
+						>EXPLAIN THE DIFFERENCE BETWEEN LEGISLATIVE, EXECUTIVE, AND
+						JUDICIARY IN THE GOVERNMENT SYSTEM ?</label
+					>
+					<textarea
+						id="qDifference"
+						placeholder="Jelaskan perbedaan..."
+					></textarea>
+
+					<label
+						>WHY SHOULD WE ACCEPT YOU OR GRANT YOU THE STATE BAR LICENSE
+						?</label
+					>
+					<textarea
+						id="qWhyBar"
+						placeholder="Alasan menerima / layak mendapatkan..."
+					></textarea>
+				</div>
+
+				<!-- OUT OF CHARACTERS -->
+				<div class="section" id="ooc-section">
+					<h2
+						style="
+							background: linear-gradient(90deg, var(--accent), #06427a);
+							color: #fff;
+							padding: 8px;
+							border-radius: 6px;
+						"
+					>
+						(( OUT OF CHARACTERS INFORMATION ))
+					</h2>
+
+					<label>REAL LIFE NAME</label>
+					<input type="text" id="realName" />
+
+					<label>REAL LIFE AGE</label>
+					<input type="text" id="realAge" />
+
+					<label>DISCORD ID</label>
+					<input type="text" placeholder="rhenaldidi" id="discordId" />
+
+					<label
+						>HAVE YOU EVER PLAY AS AN ATTORNEY / JUDGE? IF YES PLEASE TELL US
+						ABOUT IT</label
+					>
+					<textarea
+						id="playedExplain"
+						placeholder="Pengalaman, server, roleplay, dsb."
+					></textarea>
+				</div>
+
+				<div class="actions">
+					<button type="button" id="btnGenerate">Generate</button>
+					<button type="button" id="btnCopy" class="ghost">Copy</button>
+					<button type="button" id="btnPreview" class="ghost">Preview</button>
+				</div>
+			</form>
+
+			<h3>Generated BBC Code</h3>
+			<pre id="output" aria-readonly="true" readonly></pre>
+
+			<!-- Popup Preview -->
+			<div id="popup">
+				<div id="popupInner">
+					<h3>Preview BBC Code</h3>
+					<pre id="popupOutput"></pre>
+					<div class="small">
+						Klik <button id="popupCopy" class="inline">Copy</button> untuk
+						menyalin isi preview.
+					</div>
+					<div style="margin-top: 10px">
+						<button id="popupClose" class="ghost">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			// show/hide other field for legal avenue
+			const legalAvenue = document.getElementById('legalAvenue');
+			const legalAvenueOtherWrap = document.getElementById(
+				'legalAvenueOtherWrap'
+			);
+			legalAvenue.addEventListener('change', () => {
+				if (legalAvenue.value === 'other')
+					legalAvenueOtherWrap.style.display = 'block';
+				else legalAvenueOtherWrap.style.display = 'none';
+			});
+
+			// helper to safe text (no extra CR)
+			function safe(v) {
+				return (v || '').toString().replace(/\r/g, '').trim();
+			}
+
+			// build output exactly matching template
+			function buildTemplate() {
+				// choose legal avenue final text
+				let avenue = safe(legalAvenue.value);
+				if (avenue === 'other') {
+					avenue =
+						safe(document.getElementById('legalAvenueOther').value) ||
+						'Others, please explain';
+				}
+
+				const outLines = [];
+				outLines.push(
+					'[divbox=white][center][img]https://r2.fivemanage.com/g5ca8Lg0Gu8aQs0cJrPw6/PMuDEM6tW8Hn.png[/img][/center][hr]'
+				);
+				outLines.push(
+					'[divbox=#002d70][size=120][color=white]PERSONAL INFORMATION[/color][/size][/divbox]'
+				);
+				outLines.push('[divbox=white][list=1][*]RECRUITMENT NAMES [b]:[/b]');
+				outLines.push(
+					'[list=none][*]FIRST NAME[b]:[/b] ' +
+						(safe(document.getElementById('firstName').value) ||
+							'<ANSWER HERE>')
+				);
+				outLines.push(
+					'[*]LAST NAME[b]:[/b] ' +
+						(safe(document.getElementById('lastName').value) || '<ANSWER HERE>')
+				);
+				outLines.push('[/list]');
+				outLines.push('[*]DATE OF BIRTH (DD/MM/YYYY) [b]:[/b]');
+				outLines.push(
+					'[list=none][*]' +
+						(safe(document.getElementById('dob').value) || '<ANSWER HERE>') +
+						'[/list]'
+				);
+				outLines.push('[*]PLACE OF BIRTH [b]:[/b]');
+				outLines.push(
+					'[list=none][*]' +
+						(safe(document.getElementById('pob').value) || '<ANSWER HERE>') +
+						'[/list]'
+				);
+				outLines.push('[*]GENDER [b]:[/b]');
+				outLines.push(
+					'[list=none][*]' +
+						(safe(document.getElementById('gender').value) || '<ANSWER HERE>') +
+						'[/list]'
+				);
+				outLines.push('[*]PHONE NUMBER [b]:[/b]');
+				outLines.push(
+					'[list=none][*]' +
+						(safe(document.getElementById('phone').value) || '<ANSWER HERE>') +
+						'[/list]'
+				);
+				outLines.push(
+					'[*]FROM THE FOLLOWING LEGAL AVENUES, WHICH ONE WOULD YOU CHOOSE ? [b]:[/b]'
+				);
+				outLines.push('[list=none][*]');
+				// keep the numbered list as in template but put chosen answer below
+				outLines.push('1. Join the Department of Justice – State Attorney');
+				outLines.push('2. Join the Judiciary - Judge');
+				outLines.push(
+					'3. Administrative Office / Clerk (focusing on correspondence, payroll, documents, and DOJ administration)'
+				);
+				outLines.push('4. Take the State Bar to establish/join a Law Firm');
+				outLines.push('5. Others, please explain');
+				outLines.push('');
+				outLines.push('Selected: ' + (avenue || '<ANSWER HERE>'));
+				outLines.push('');
+				outLines.push('[/list][/list][/divbox]');
+
+				outLines.push(
+					'[divbox=#002d70][size=120][color=white]LEGAL INFORMATION[/color][/size][/divbox]'
+				);
+				outLines.push(
+					'[divbox=white][list=1][*]DO YOU HAVE GOOD CONDUCT ? [b]:[/b]'
+				);
+				outLines.push(
+					'[list=none][*]' +
+						(safe(document.getElementById('goodConduct').value) ||
+							'<ANSWER HERE>') +
+						'[/list]'
+				);
+				outLines.push(
+					'[*]HAVE YOU EVER BEEN ARRESTED BY THE POLICE ? IF YES PLEASE EXPLAIN [b]:[/b]'
+				);
+				outLines.push(
+					'[list=none][*]' +
+						(safe(document.getElementById('arrestExplain').value) ||
+							'<ANSWER HERE>') +
+						'[/list]'
+				);
+				outLines.push(
+					'[*]DO YOU HAVE FAMILY OR RELATIVES WHO ARE AFFILIATED WITH STREET GANGS ? IF YES PLEASE EXPLAIN [b]:[/b]'
+				);
+				outLines.push(
+					'[list=none][*]' +
+						(safe(document.getElementById('gangExplain').value) ||
+							'<ANSWER HERE>') +
+						'[/list]'
+				);
+				outLines.push('[*]ARE YOU MARRIED OR NOT? [b]:[/b]');
+				outLines.push(
+					'[list=none][*]' +
+						(safe(document.getElementById('marital').value) ||
+							'<ANSWER HERE>') +
+						'[/list]'
+				);
+				outLines.push(
+					'[*]ARE YOU READY TO JOIN THE ACADEMY DEPARTMENT OF JUSTICE ON SEPTEMBER 15–16 AT 08:00 PM, WHETHER YOU WANT TO JOIN THE DOJ OR JUST WANT TO TAKE THE STATE BAR EXAM?[b] :[/b]'
+				);
+				outLines.push(
+					'[list=none][*]' +
+						(safe(document.getElementById('readyAcademy').value) ||
+							'<ANSWER HERE>')
+				);
+				outLines.push('[/list][/list][/divbox]');
+
+				outLines.push(
+					'[divbox=#002d70][size=120][color=white]PERSONAL QUESTION[/color][/size][/divbox]'
+				);
+				outLines.push(
+					'[divbox=white][list=1][*]EXPLAIN THE DIFFERENCE BETWEEN LEGISLATIVE, EXECUTIVE, AND JUDICIARY IN THE GOVERNMENT SYSTEM ? [b]:[/b]'
+				);
+				outLines.push(
+					'[list=none][*]' +
+						(safe(document.getElementById('qDifference').value) ||
+							'<ANSWER HERE>') +
+						'[/list]'
+				);
+				outLines.push(
+					'[*]WHY SHOULD WE ACCEPT YOU OR GRANT YOU THE STATE BAR LICENSE ? [b]:[/b]'
+				);
+				outLines.push(
+					'[list=none][*]' +
+						(safe(document.getElementById('qWhyBar').value) || '<ANSWER HERE>')
+				);
+				outLines.push('[/list][/list][/divbox]');
+
+				outLines.push(
+					'[divbox=#002d70][size=120][color=white](( OUT OF CHARACTERS INFORMATION ))[/color][/size][/divbox]'
+				);
+				outLines.push('[divbox=white][list=1][*]REAL LIFE NAME [b]:[/b]');
+				outLines.push(
+					'[list=none][*]' +
+						(safe(document.getElementById('realName').value) ||
+							'<ANSWER HERE>') +
+						'[/list]'
+				);
+				outLines.push('[*]REAL LIFE AGE [b]:[/b]');
+				outLines.push(
+					'[list=none][*]' +
+						(safe(document.getElementById('realAge').value) ||
+							'<ANSWER HERE>') +
+						'[/list]'
+				);
+				outLines.push('[*]DISCORD ID [b]:[/b]');
+				outLines.push(
+					'[list=none][*]' +
+						(safe(document.getElementById('discordId').value) ||
+							'<ANSWER HERE>') +
+						'[/list]'
+				);
+				outLines.push(
+					'[*]HAVE YOU EVER PLAY AS AN ATTORNEY / JUDGE? IF YES PLEASE TELL US ABOUT IT [b]:[/b]'
+				);
+				outLines.push(
+					'[list=none][*]' +
+						(safe(document.getElementById('playedExplain').value) ||
+							'<ANSWER HERE>')
+				);
+				outLines.push('[/list][/list]');
+
+				return outLines.join('\n');
+			}
+
+			// DOM refs
+			const btnGenerate = document.getElementById('btnGenerate');
+			const btnCopy = document.getElementById('btnCopy');
+			const btnPreview = document.getElementById('btnPreview');
+			const output = document.getElementById('output');
+			const popup = document.getElementById('popup');
+			const popupOutput = document.getElementById('popupOutput');
+			const popupCopy = document.getElementById('popupCopy');
+			const popupClose = document.getElementById('popupClose');
+
+			btnGenerate.addEventListener('click', () => {
+				output.textContent = buildTemplate();
+				// scroll to top of output
+				output.scrollTop = 0;
+			});
+
+			btnCopy.addEventListener('click', async () => {
+				const txt = output.textContent || '';
+				if (!txt) {
+					alert('Silakan generate terlebih dahulu.');
+					return;
+				}
+				try {
+					await navigator.clipboard.writeText(txt);
+					alert('BBC code berhasil dicopy ke clipboard.');
+				} catch (e) {
+					// fallback
+					prompt('Salin manual (Ctrl+C):', txt);
+				}
+			});
+
+			btnPreview.addEventListener('click', () => {
+				const txt = output.textContent || buildTemplate();
+				popupOutput.textContent = txt;
+				popup.style.display = 'flex';
+			});
+
+			popupCopy.addEventListener('click', async () => {
+				const txt = popupOutput.textContent || '';
+				try {
+					await navigator.clipboard.writeText(txt);
+					alert('Copied from preview.');
+				} catch (e) {
+					prompt('Salin manual (Ctrl+C):', txt);
+				}
+			});
+
+			popupClose.addEventListener('click', () => {
+				popup.style.display = 'none';
+			});
+
+			// auto-generate on load with defaults
+			window.addEventListener('load', () => {
+				output.textContent = buildTemplate();
+			});
+		</script>
+	</body>
+</html>
